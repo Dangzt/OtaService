@@ -26,7 +26,9 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.upgrading.R;
+import com.example.upgrading.bean.EventType;
 import com.example.upgrading.bean.UpdataBean;
+import com.example.upgrading.utils.LedUtils;
 import com.example.upgrading.utils.NetWorkUtils;
 import com.example.upgrading.utils.OkHttpUtil;
 import com.example.upgrading.utils.SharedPreferencesHelper;
@@ -167,11 +169,11 @@ public class DownloadService extends Service {
                     int compareForce = UpdataUtils.compareVersion(localVersion, updataBean.getData().getForceVersion());
                     int compare = UpdataUtils.compareVersion(localVersion, updataBean.getData().getVersion());
                     if (compareForce == -1) {
-//                        Toast.makeText(DownloadService.this, "需要去升级", Toast.LENGTH_LONG).show();
+                        Toast.makeText(DownloadService.this, "需要去升级", Toast.LENGTH_LONG).show();
                     } else if (compare == -1) {
-//                        Toast.makeText(DownloadService.this, "是否去升级", Toast.LENGTH_LONG).show();
+                        Toast.makeText(DownloadService.this, "是否去升级", Toast.LENGTH_LONG).show();
                     } else {
-//                        Toast.makeText(DownloadService.this, "不需要升级", Toast.LENGTH_LONG).show();
+                        Toast.makeText(DownloadService.this, "不需要升级", Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -209,6 +211,7 @@ public class DownloadService extends Service {
         this.call = callback;
         initDownload();
         if (thread == null) {
+            LedUtils.sendEvent(this,LedUtils.EVENT_ACTION_ADD, EventType.DOWNLOADING_OTA.name());
             thread = new MyThread();
             executor.execute(thread);
         } else {

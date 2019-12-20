@@ -31,9 +31,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.upgrading.bean.EventType;
 import com.example.upgrading.presenter.UpdataContract;
 import com.example.upgrading.presenter.UpdataPresenter;
 import com.example.upgrading.utils.FileMD5Utils;
+import com.example.upgrading.utils.LedUtils;
 import com.example.upgrading.utils.NetWorkUtils;
 import com.example.upgrading.utils.OkHttpUtil;
 import com.example.upgrading.R;
@@ -168,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements UpdataContract.Vi
         Toast.makeText(this, "下载到" + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
         if (FileMD5Utils.getFileMD5(file).equals(md5)) {
             tvProgress.setText("下载完成");
+            LedUtils.sendEvent(this,LedUtils.EVENT_ACTION_REMOVE, EventType.DOWNLOADING_COMPLETE.name());
             try {
                 //升级
                 installPackage(this, file);
