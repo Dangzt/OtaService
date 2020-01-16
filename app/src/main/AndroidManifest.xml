@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.upgrading"
+    package="com.soundai.upgrading"
     android:sharedUserId="android.uid.system" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,18 +21,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name="com.example.upgrading.view.DownloadService"
+            android:name="com.soundai.upgrading.view.DownloadService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.upgrading.service.DownloadService" />
+                <action android:name="com.soundai.upgrading.service.DownloadService" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
         <!-- 定义FileProvider 7.0版本更新 -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.upgrading.fileprovider"
+            android:authorities="com.soundai.upgrading.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -40,10 +40,10 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".view.MainActivity">
+        <activity android:name="com.soundai.upgrading.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.soundai.action.updata" />
+                <action android:name="com.soundai.action.update" />
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

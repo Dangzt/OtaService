@@ -1,4 +1,4 @@
-package com.example.upgrading.utils;
+package com.soundai.upgrading.utils;
 
 import android.os.Handler;
 import android.os.Looper;

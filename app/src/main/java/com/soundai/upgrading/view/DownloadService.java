@@ -1,7 +1,5 @@
-package com.example.upgrading.view;
+package com.soundai.upgrading.view;
 
-import android.app.ActivityManager;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -10,9 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Binder;
-import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
@@ -23,25 +19,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.FileProvider;
 
-import com.example.upgrading.R;
-import com.example.upgrading.bean.EventType;
-import com.example.upgrading.bean.UpdataBean;
-import com.example.upgrading.utils.LedUtils;
-import com.example.upgrading.utils.NetWorkUtils;
-import com.example.upgrading.utils.OkHttpUtil;
-import com.example.upgrading.utils.SharedPreferencesHelper;
-import com.example.upgrading.utils.UpdataUtils;
+import com.soundai.upgrading.R;
+import com.soundai.upgrading.bean.EventType;
+import com.soundai.upgrading.bean.UpdataBean;
+import com.soundai.upgrading.utils.LedUtils;
+import com.soundai.upgrading.utils.NetWorkUtils;
+import com.soundai.upgrading.utils.OkHttpUtil;
+import com.soundai.upgrading.utils.UpdataUtils;
 import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -49,8 +40,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 import static java.lang.Thread.sleep;
@@ -149,7 +138,7 @@ public class DownloadService extends Service {
             mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             mBuilder = new NotificationCompat.Builder(this);
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                channel = new NotificationChannel(CHANNEL, "com.example.upgrading", NotificationManager
+                channel = new NotificationChannel(CHANNEL, "com.soundai.upgrading", NotificationManager
                         .IMPORTANCE_MIN);
                 mNotificationManager.createNotificationChannel(channel);
             }

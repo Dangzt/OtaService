@@ -1,10 +1,8 @@
-package com.example.upgrading.utils;
+package com.soundai.upgrading.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-
-import com.example.upgrading.bean.UpdataBean;
 
 public class UpdataUtils {
     /**

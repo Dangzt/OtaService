@@ -1,61 +1,38 @@
-package com.example.upgrading.view;
+package com.soundai.upgrading.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.PersistableBundle;
 import android.os.PowerManager;
 import android.os.RecoverySystem;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.upgrading.bean.EventType;
-import com.example.upgrading.presenter.UpdataContract;
-import com.example.upgrading.presenter.UpdataPresenter;
-import com.example.upgrading.utils.FileMD5Utils;
-import com.example.upgrading.utils.LedUtils;
-import com.example.upgrading.utils.NetWorkUtils;
-import com.example.upgrading.utils.OkHttpUtil;
-import com.example.upgrading.R;
-import com.example.upgrading.bean.UpdataBean;
-import com.example.upgrading.utils.PermissionsUtils;
-import com.example.upgrading.utils.UpdataUtils;
-import com.google.gson.Gson;
+import com.soundai.upgrading.bean.EventType;
+import com.soundai.upgrading.presenter.UpdataContract;
+import com.soundai.upgrading.presenter.UpdataPresenter;
+import com.soundai.upgrading.utils.FileMD5Utils;
+import com.soundai.upgrading.utils.LedUtils;
+import com.soundai.upgrading.utils.NetWorkUtils;
+import com.soundai.upgrading.R;
+import com.soundai.upgrading.utils.PermissionsUtils;
+import com.soundai.upgrading.utils.UpdataUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.security.GeneralSecurityException;
-import java.util.Locale;
 
-import okhttp3.Call;
-import okhttp3.Response;
-
-import static android.os.Process.killProcess;
 import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity implements UpdataContract.View {
@@ -217,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements UpdataContract.Vi
     protected void onDestroy() {
         Log.e("dang", "AonDestroy++");
         super.onDestroy();
+        updataPresenter.unbind(this);
     }
 
     private void checkPermissions() {

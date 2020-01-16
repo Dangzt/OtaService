@@ -1,4 +1,4 @@
-package com.example.upgrading.bean;
+package com.soundai.upgrading.bean;
 
 public enum EventType {
     EVENT_CLOSE,//关闭事件

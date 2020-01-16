@@ -1,4 +1,4 @@
-package com.example.upgrading.presenter;
+package com.soundai.upgrading.presenter;
 
 import android.app.Service;
 import android.content.ComponentName;
@@ -9,17 +9,16 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.upgrading.bean.UpdataBean;
-import com.example.upgrading.view.DownloadService;
-import com.example.upgrading.utils.OkHttpUtil;
-import com.example.upgrading.utils.UpdataUtils;
+import com.soundai.upgrading.bean.UpdataBean;
+import com.soundai.upgrading.view.DownloadService;
+import com.soundai.upgrading.utils.OkHttpUtil;
+import com.soundai.upgrading.utils.UpdataUtils;
 import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
 
 import okhttp3.Call;
-import okhttp3.Response;
 
 public class UpdataPresenter implements UpdataContract.Presenter {
     private UpdataContract.View view;

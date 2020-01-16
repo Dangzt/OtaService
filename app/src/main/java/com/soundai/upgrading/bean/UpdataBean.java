@@ -1,4 +1,4 @@
-package com.example.upgrading.bean;
+package com.soundai.upgrading.bean;
 
 import java.util.List;
 
